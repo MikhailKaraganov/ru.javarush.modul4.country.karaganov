@@ -12,7 +12,7 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-public class Main {
+public class DBPerformanceComparator {
     static final DBConnection dbConnection = new DBConnection();
     static final Session currentSession = dbConnection.getCurrentSession();
     static final CityDAO cityDAO = new CityDAO(City.class, currentSession.getSessionFactory());

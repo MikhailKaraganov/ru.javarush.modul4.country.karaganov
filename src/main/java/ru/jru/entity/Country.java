@@ -3,6 +3,7 @@ package ru.jru.entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -184,5 +185,18 @@ public class Country {
 
     public void setLangusges(Set<CountryLanguage> langusges) {
         this.langusges = langusges;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return id.equals(country.id) && code.equals(country.code) && code2.equals(country.code2) && name.equals(country.name) && continent == country.continent && region.equals(country.region) && surfaceArea.equals(country.surfaceArea) && independenceYear.equals(country.independenceYear) && population.equals(country.population) && lifeExpectancy.equals(country.lifeExpectancy) && gnp.equals(country.gnp) && gnpoID.equals(country.gnpoID) && localName.equals(country.localName) && governmentForm.equals(country.governmentForm) && headOfState.equals(country.headOfState) && capital.equals(country.capital) && langusges.equals(country.langusges);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, code, code2, name, continent, region, surfaceArea, independenceYear, population, lifeExpectancy, gnp, gnpoID, localName, governmentForm, headOfState, capital, langusges);
     }
 }
