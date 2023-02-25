@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class EntityDAO<T> {
     private final Class<T> clazz;
@@ -19,7 +20,8 @@ public abstract class EntityDAO<T> {
     }
 
     public T getById(final int id) {
-        return (T) getCurrentSession().get(clazz, id);
+        Optional<T> t = Optional.of(getCurrentSession().get(clazz, id));
+        return t.orElse(null);
     }
 
     public List<T> getItems(int offset, int count) {
@@ -44,8 +46,6 @@ public abstract class EntityDAO<T> {
     protected Session getCurrentSession(){
         return sessionFactory.getCurrentSession();
     }
-
-
 
     public Long getAllAmount(){
         Transaction transaction = getCurrentSession().beginTransaction();

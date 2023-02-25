@@ -13,6 +13,7 @@ public class Country {
     private Integer id;
 
     private String code;
+
     @Column(name = "code_2")
     private String code2;
 
@@ -20,22 +21,43 @@ public class Country {
 
     @Enumerated(EnumType.ORDINAL)
     private Continent continent;
+
     private String region;
     @Column(name = "surface_area")
     private BigDecimal surfaceArea;
+
     @Column(name = "indep_year")
     private Short independenceYear;
+
     private Integer population;
+
     @Column(name = "life_expectancy")
     private BigDecimal lifeExpectancy;
 
     private BigDecimal gnp;
+
     @Column(name = "gnpo_id")
     private BigDecimal gnpoID;
+
     @Column(name = "local_name")
     private String localName;
+
     @Column(name = "government_form")
     private String governmentForm;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return id.equals(country.id) && name.equals(country.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
     @Column(name = "head_of_state")
     private String headOfState;
 
@@ -185,18 +207,5 @@ public class Country {
 
     public void setLangusges(Set<CountryLanguage> langusges) {
         this.langusges = langusges;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Country country = (Country) o;
-        return id.equals(country.id) && code.equals(country.code) && code2.equals(country.code2) && name.equals(country.name) && continent == country.continent && region.equals(country.region) && surfaceArea.equals(country.surfaceArea) && independenceYear.equals(country.independenceYear) && population.equals(country.population) && lifeExpectancy.equals(country.lifeExpectancy) && gnp.equals(country.gnp) && gnpoID.equals(country.gnpoID) && localName.equals(country.localName) && governmentForm.equals(country.governmentForm) && headOfState.equals(country.headOfState) && capital.equals(country.capital) && langusges.equals(country.langusges);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, code, code2, name, continent, region, surfaceArea, independenceYear, population, lifeExpectancy, gnp, gnpoID, localName, governmentForm, headOfState, capital, langusges);
     }
 }

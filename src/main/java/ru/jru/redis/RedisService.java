@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Transformer {
+public class RedisService {
 
     public List<CityCountry> transformData(List<City> cities) {
 

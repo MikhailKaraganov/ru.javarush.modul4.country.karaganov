@@ -28,6 +28,19 @@ public class CountryLanguage {
     private BigDecimal percentage;
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CountryLanguage that = (CountryLanguage) o;
+        return id.equals(that.id) && language.equals(that.language);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, language);
+    }
+
     public Integer getId() {
         return id;
     }
@@ -66,18 +79,5 @@ public class CountryLanguage {
 
     public void setPercentage(BigDecimal percentage) {
         this.percentage = percentage;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CountryLanguage that = (CountryLanguage) o;
-        return id.equals(that.id) && country.equals(that.country) && language.equals(that.language) && isOfficial.equals(that.isOfficial) && percentage.equals(that.percentage);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, country, language, isOfficial, percentage);
     }
 }
